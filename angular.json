@@ -80,6 +80,9 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
