@@ -1,0 +1,44 @@
+<div *ngIf="isEditing" class="editor">
+  <input
+    *ngIf="type === 'text' && !textarea"
+    type="text"
+    name="value"
+    autofocus
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+  />
+
+  <input
+    *ngIf="type === 'number' && !textarea"
+    type="type"
+    name="value"
+    autofocus
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    style="width: 80px"
+  />
+
+  <textarea
+    rows="6"
+    style="width: 100%"
+    *ngIf="textarea"
+    type="type"
+    name="value"
+    autofocus
+    [(ngModel)]="pendingValue"
+    (keydown.Escape)="cancel()"
+  ></textarea>
+  <button (click)="processChanges()">Save</button>
+  <a (click)="cancel()" (keydown.Enter)="cancel()" tabindex="0">Cancel</a>
+</div>
+<div style="cursor: pointer" *ngIf="!isEditing" (click)="edit()">
+  <span style="font-size: 14px" *ngIf="!currency">{{ value }}</span>
+
+  <span style="font-size: 14px" *ngIf="currency">
+    {{ value | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+  </span>
+</div>
