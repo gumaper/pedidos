@@ -376,17 +376,17 @@ export class AppComponent implements OnInit {
     this.gerandoPdf = true;
 
     setTimeout(() => {
-      const doc = new jsPDF();
+      const doc = new jsPDF('p', 'pt', 'a4', true);
       const divToPrint = document.getElementById('pdf') as any;
 
       html2canvas(divToPrint).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
+        const pdf = new jsPDF('p', 'pt', 'a4', true);
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, 270, '', 'FAST');
         pdf.save(this.pedido + '.pdf');
 
         // const pdfBlob = pdf.output('blob');
