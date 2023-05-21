@@ -186,7 +186,7 @@
           *ngFor="let mercadoria of mercadoriasLM; let indice = index"
           [value]="indice"
         >
-          {{ mercadoria.descricao }} -
+          {{ mercadoria.descricao.replace("LM", "") }} -
           {{ mercadoria.valor | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
         </option>
       </select>
@@ -200,7 +200,7 @@
           *ngFor="let mercadoria of mercadoriasShampoo; let indice = index"
           [value]="indice"
         >
-          {{ mercadoria.descricao }} -
+          {{ mercadoria.descricao.replace("Shampoo", "") }} -
           {{ mercadoria.valor | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
         </option>
       </select>
@@ -214,7 +214,7 @@
           *ngFor="let mercadoria of mercadoriasSolupan; let indice = index"
           [value]="indice"
         >
-          {{ mercadoria.descricao }} -
+          {{ mercadoria.descricao.replace("Solupan", "") }} -
           {{ mercadoria.valor | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
         </option>
       </select>
